@@ -28,11 +28,12 @@ jobs:
         # optional
         parameters_file: "compute.json
 
-    # Deploy model in Azure Machine Learning to ACI
-    - name: Deploy model
-      id: aml_deploy
-      uses: Azure/aml-deploy@v1
-      with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          model_name:  ${{ steps.aml_registermodel.outputs.model_name }}
-          model_version: ${{ steps.aml_registermodel.outputs.model_version }}
+      # Deploy your model to production
+      - name: Prod Deploy
+        id: aml_prod_deploy
+        uses: Azure/aml-deploy@v1
+        with:
+           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+           model_name:  "${{ steps.aml_registermodel.outputs.model_name }}"  
+           model_version: "${{ steps.aml_registermodel.outputs.model_version }}"
+           parameters_file: "deploy_aks.json"
