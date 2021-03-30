@@ -37,6 +37,7 @@ jobs:
           inlineScript: |
             # pip install --upgrade pip --target /opt/az/lib/python3.6/site-packages/
             # pip install --upgrade pip
-            pip3 install --target /opt/az/lib/python3.6/site-packages/ keyring~=17.1.1
-            az extension add -n azure-cli-ml --debug
+            pip3 freeze --path /opt/az/lib/python3.6/site-packages/ | grep '^keyring=='
+            #pip3 install --target /opt/az/lib/python3.6/site-packages/ keyring~=17.1.1
+            #az extension add -n azure-cli-ml --debug
 
