@@ -36,5 +36,4 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
             az account show
-            az storage -h
           echo test, and deploy your project.
