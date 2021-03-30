@@ -35,5 +35,6 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
+            pip install --upgrade pip --target /opt/az/lib/python3.6/site-packages/
             az extension add -n azure-cli-ml --debug
 
