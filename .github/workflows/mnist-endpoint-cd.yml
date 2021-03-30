@@ -29,14 +29,13 @@ jobs:
         parameters_file: "compute.json
 
 	- name: Azure Machine Learning Deploy Action
-	  uses: Azure/aml-deploy@v1.15.0
+	  uses: Azure/aml-deploy@v1
 	  with:
 	    # Paste output of `az ad sp create-for-rbac --name <your-sp-name> --role contributor --scopes /subscriptions/<your-subscriptionId>/resourceGroups/<your-rg> --sdk-auth` as value of secret variable: AZURE_CREDENTIALS
-	    azure_credentials: 
+	    azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 	    # Name of the model that will be deployed
-	    model_name: 
+	    model_name: "sklearn_mnist"
 	    # Version of the model that will be deployed
-	    model_version: 
+	    model_version: 1
 	    # JSON file including the parameters for deployment. This looks in the .ml/.azure/ directory
-	    parameters_file: # default is deploy.json
-
+	    parameters_file: "deploy_aks.json"
