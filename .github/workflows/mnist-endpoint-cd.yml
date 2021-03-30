@@ -34,14 +34,4 @@ jobs:
         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
         model_name: "sklearn_mnist"
         model_version: "1"
-        parameters_file: "deploy_aks.json
-
-      # Deploy your model to production
-      - name: Prod Deploy
-        id: aml_prod_deploy
-        uses: Azure/aml-deploy@v1
-        with:
-           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-           model_name:  "sklearn_mnist"
-           model_version: "1"
-           parameters_file: "deploy_aks.json"
+        parameters_file: "deploy_aks.json"
