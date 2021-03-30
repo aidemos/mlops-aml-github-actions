@@ -36,6 +36,7 @@ jobs:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           model_name:  ${{ steps.aml_registermodel.outputs.model_name }}
           model_version: ${{ steps.aml_registermodel.outputs.model_version }}
+          parameters_file: "deploy_aks.json"
 
     # Deploy model in Azure Machine Learning to ACI
     - name: Deploy model
