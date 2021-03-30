@@ -13,13 +13,13 @@ jobs:
       id: checkout_repository
       uses: actions/checkout@v2
 
-    # AML Workspace Action
+    # Connect to Azure Machine Learning Workspace
     - uses: Azure/aml-workspace@v1
       id: aml_workspace
       with:
         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 
-    # AML Compute Action
+    # Create AKS Compute
     - uses: Azure/aml-compute@v1
       id: aml_compute
       with:
@@ -27,3 +27,13 @@ jobs:
         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
         # optional
         parameters_file: "compute.json"
+    
+    # Deploy your model to production
+    - name: Prod Deploy
+      id: aml_prod_deploy
+      uses: Azure/aml-deploy@v1
+      with:
+         azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+         model_name:  "sklearn_mnist:1"  
+           model_version: "${{ steps.aml_registermodel.outputs.model_version }}"
+           parameters_file: "deploy_aks.json"
