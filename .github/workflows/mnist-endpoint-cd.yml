@@ -34,6 +34,6 @@ jobs:
       uses: Azure/aml-deploy@v1
       with:
          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-         model_name:  "sklearn_mnist:1"  
-           model_version: "${{ steps.aml_registermodel.outputs.model_version }}"
+         model_name:  "sklearn_mnist"  
+         model_version: "1"
            parameters_file: "deploy_aks.json"
