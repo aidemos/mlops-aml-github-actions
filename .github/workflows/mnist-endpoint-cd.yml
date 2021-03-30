@@ -28,12 +28,14 @@ jobs:
         # optional
         parameters_file: "compute.json
 
-    - name: Azure Machine Learning Deploy Action
+    # Deploy model in Azure Machine Learning to ACI
+    - name: Deploy model
+      id: aml_deploy
       uses: Azure/aml-deploy@v1
       with:
-	# Paste output of `az ad sp create-for-rbac --name <your-sp-name> --role contributor --scopes /subscriptions/<your-subscriptionId>/resourceGroups/<your-rg> --sdk-auth` as value of secret variable: AZURE_CREDENTIALS
-	azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-	# Name of the model that will be deployed
-	model_name: "sklearn_mnist"
-	model_version: "1"
-	parameters_file: "deploy_aks.json"
+        # required inputs
+        azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+        model_name:  "sklearn_mnist"
+        model_version: "1"
+        # optional inputs
+        parameters_file: "deploy_aks.json"
