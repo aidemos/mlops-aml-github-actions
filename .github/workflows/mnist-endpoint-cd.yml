@@ -35,5 +35,5 @@ jobs:
       with:
          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
          model_name:  "sklearn_mnist"  
-         model_version: "1"
+         model_version: 1
            parameters_file: "deploy_aks.json"
