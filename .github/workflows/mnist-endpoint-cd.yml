@@ -36,5 +36,4 @@ jobs:
           azcliversion: 2.0.72
           inlineScript: |
             az extension add -n azure-cli-ml
-            az ml computetarget create aks --name akscompute -g mlops --workspace-name mlops-AML-WS
 
