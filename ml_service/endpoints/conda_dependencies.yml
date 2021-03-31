@@ -26,6 +26,7 @@ dependencies:
       - azureml-sdk
       - azureml-dataset-runtime[pandas,fuse]
       - azureml-defaults
+      - build-essential
 
       # Must match AzureML SDK version.
       # https://docs.microsoft.com/en-us/azure/machine-learning/concept-environments
